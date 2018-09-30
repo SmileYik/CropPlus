@@ -1,0 +1,10 @@
+language: zh_CN
+#植物多久生长一次 单位为秒
+period: 300
+#植物在干枯的耕地上生长一定次数后干枯
+no-water: 2
+lore:
+  #分隔符
+  split: ">"
+  #关键字
+  label: "Seed"

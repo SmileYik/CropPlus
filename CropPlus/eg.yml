@@ -1,0 +1,63 @@
+#多久成熟
+time: 10
+#生长速度
+growth-rate: 1
+#作物种类
+#Wheat: 小麦
+#Potato: 土豆
+#Carrot: 胡萝卜
+#Beetroot: 甜菜
+crop-type: Wheat
+#种子的物品数据
+seed: 物品数据
+#无限为-1,
+#0~n中一个数代表可以收货n次, -1代表可以收获无限次
+multiple: 10
+#每次收获后作物恢复到成熟状态的0.几
+reback: 0.5
+#正常生长所需的光照,光照等级为1~15
+light: 10
+#骨灰促进作用,1为促进100%的生长
+bone-meal-promote: 0.2-0.3
+#被破坏掉落种子的几率
+break-drop-seed: 100
+#季节
+#  Spring,
+#  Summer,
+#  Autumn,
+#  Winter,
+season:
+  #代表这个作物可以在哪个季节种
+  season: 
+    - "Spring"
+  #跨季节时作物死亡几率
+  death-chance: 30
+  #不适应的季节中的生长速度
+  growth-rate: 0.5
+
+#收获掉落物
+drops:
+  #掉落种子
+  drop-seed: 
+    #几率
+    chance: 30
+    #数量
+    amount: 1-3
+  #掉落物 1
+  drop1:
+    #掉落物1的物品数据
+    item: 物品数据
+    #几率
+    chance: 100
+    #数量
+    amount: 1-3
+  drop2:
+    item: 2333
+    chance: 0.1
+    amount: 2
+  #掉落物n
+    #物品信息
+    #几率
+    #数量
+    
+    
