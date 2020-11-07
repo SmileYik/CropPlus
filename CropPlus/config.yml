@@ -3,6 +3,8 @@ language: zh_CN
 period: 300
 #植物在干枯的耕地上生长一定次数后干枯
 no-water: 2
+#是否启用RealSurvival依赖, 若启用季节请打开此依赖.
+enable-realsurvival: false
 lore:
   #分隔符
   split: ">"

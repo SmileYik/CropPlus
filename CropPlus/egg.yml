@@ -1,0 +1,33 @@
+#多久成熟(秒)
+maturity: 100
+growth-speed: 1
+crop-type: Wheat
+harvest-times:
+  harvest-times: 10
+  reback-maturity: 0.2
+light:
+  light-preferences: DARK|LIGHT|NONE
+  light: 10
+  growth-speed:
+    suit-light: 0.1
+    unsuit-light: -0.3
+season:
+  SPRING: -1
+  SUMMER: 0.5
+  AUTUMN: 1
+  WINTER: 1.5
+bone-ash-promote: 0.2-0.3
+break-drop-seed: 100
+sex: true
+drops:
+  seed: 
+    fruit: true
+    chance: 0.12
+    amount: 1-3
+  drop-0:
+    fruit: true
+    chance: 0.1
+    amount: 1-3
+    item: item
+  
+  

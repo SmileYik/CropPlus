@@ -1,0 +1,11 @@
+egg:
+  rank-1:
+    main-hand: "APPLE:1"
+    off-hand: "APPLE:1"
+  rank-2:
+    main-hand: "APPLE:1"
+    off-hand: "APPLE:1"
+egg2:
+  rank-1:
+    main-hand: "APPLE:1"
+    off-hand: "APPLE:1"

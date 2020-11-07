@@ -6,19 +6,20 @@ import org.bukkit.entity.Player;
 import com.github.schooluniform.cropplus.api.event.CropPlusEvent;
 
 /**
- * CropPlusPlayerEvent
+ * CropPlusPlayerEvent.
+ * 
  * @author School_Uniform
  *
  */
-public class CropPlusPlayerEvent extends CropPlusEvent{
-    private Player player;
+public class CropPlusPlayerEvent extends CropPlusEvent {
+  private Player player;
 
-     protected CropPlusPlayerEvent(Player player,String cropId,Location location) {
-    	 super(cropId,location);
-		this.player = player;
-	}
+  protected CropPlusPlayerEvent(Player player, String cropId, Location location) {
+    super(cropId, location);
+    this.player = player;
+  }
 
-	public Player getPlayer() {
-		return player;
-	}
+  public Player getPlayer() {
+    return player;
+  }
 }
