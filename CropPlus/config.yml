@@ -5,6 +5,7 @@ period: 300
 no-water: 2
 #是否启用RealSurvival依赖, 若启用季节请打开此依赖.
 enable-realsurvival: false
+enable-bStats: true
 lore:
   #分隔符
   split: ">"

@@ -1,5 +1,12 @@
 package com.github.schooluniform.cropplus.data;
 
+import com.github.schooluniform.cropplus.CropPlus;
+import com.github.schooluniform.cropplus.api.event.natural.CPCropDeathEvent;
+import com.github.schooluniform.cropplus.api.event.natural.CropDeathEnum;
+import com.github.schooluniform.cropplus.data.manager.CropManager;
+import com.github.schooluniform.cropplus.data.manager.Manager;
+import miskyle.realsurvival.api.Season;
+import miskyle.realsurvival.randomday.RandomDayManager;
 import org.bukkit.Bukkit;
 import org.bukkit.CropState;
 import org.bukkit.Location;
@@ -8,15 +15,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.material.Crops;
 
-import com.github.schooluniform.cropplus.CropPlus;
-import com.github.schooluniform.cropplus.api.event.natural.CPCropDeathEvent;
-import com.github.schooluniform.cropplus.api.event.natural.CropDeathEnum;
-import com.github.schooluniform.cropplus.data.manager.CropManager;
-import com.github.schooluniform.cropplus.data.manager.Manager;
-
-import miskyle.realsurvival.api.Season;
-import miskyle.realsurvival.randomday.RandomDayManager;
-
+@SuppressWarnings("deprecation")
 public class Timer {
 
   private String name;
@@ -102,15 +101,7 @@ public class Timer {
     // Check Season
     if (!data.inSeason(season) && !noDeath) {
       if (Math.random() * 100 < data.getSeasonDeathChance()) {
-
-        CPCropDeathEvent event = new CPCropDeathEvent(data.getId(), getLocation(),
-            CropDeathEnum.NotAdaptingToTheSeason);
-        Bukkit.getPluginManager().callEvent(event);
-        if (!event.isCancelled()) {
-          CropManager.removeTimer(CropManager.getID(getLocation()));
-          getLocation().getBlock().setType(Material.DEAD_BUSH);
-        }
-
+        callDeathEvent(data.getId(), CropDeathEnum.NotAdaptingToTheSeason);
         return;
       } else {
         noDeath = true;
@@ -124,15 +115,7 @@ public class Timer {
         .getState().getData().toItemStack().getDurability() != 7) {
       nowater++;
       if (nowater >= Manager.noWater) {
-
-        CPCropDeathEvent event = 
-            new CPCropDeathEvent(data.getId(), getLocation(), CropDeathEnum.Dehydration);
-        Bukkit.getPluginManager().callEvent(event);
-        if (!event.isCancelled()) {
-          CropManager.removeTimer(CropManager.getID(getLocation()));
-          getLocation().getBlock().setType(Material.DEAD_BUSH);
-        }
-
+        callDeathEvent(data.getId(), CropDeathEnum.Dehydration);
       }
       return;
     }
@@ -193,6 +176,18 @@ public class Timer {
     } else if (multiple < -1) {
       multiple = -1;      
     }
+  }
+  
+  private void callDeathEvent(String cropId, CropDeathEnum type) {
+    CropPlus.plugin.getServer().getScheduler().runTask(CropPlus.plugin, () -> {
+      CPCropDeathEvent event = 
+          new CPCropDeathEvent(cropId, getLocation(), type);
+      Bukkit.getPluginManager().callEvent(event);
+      if (!event.isCancelled()) {
+        CropManager.removeTimer(CropManager.getID(getLocation()));
+        getLocation().getBlock().setType(Material.DEAD_BUSH);
+      }      
+    });
   }
 
   public void changeTime(double time) {

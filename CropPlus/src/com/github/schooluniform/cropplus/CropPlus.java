@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CropPlus extends JavaPlugin {
-  private int id;
   public static CropPlus plugin;
 
   @Override
@@ -19,7 +18,7 @@ public class CropPlus extends JavaPlugin {
     firstLoad();
     Manager.init(this);
     getServer().getPluginManager().registerEvents(new CropEvents(), this);
-    id = getServer().getScheduler().runTaskTimerAsynchronously(
+    getServer().getScheduler().runTaskTimerAsynchronously(
         this, new CropManager(), 0, getConfig().getInt("period", 1) * 20L).getTaskId();
   }
 
@@ -35,9 +34,6 @@ public class CropPlus extends JavaPlugin {
         CropManager.save();
         firstLoad();
         Manager.init(this);
-        getServer().getScheduler().cancelTask(id);
-        id = getServer().getScheduler().runTaskTimer(
-            this, new CropManager(), 0, getConfig().getInt("period") * 20L).getTaskId();
         sender.sendMessage("Successed!");
       }
     }

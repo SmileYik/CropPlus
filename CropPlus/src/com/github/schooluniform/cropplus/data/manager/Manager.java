@@ -1,5 +1,6 @@
 package com.github.schooluniform.cropplus.data.manager;
 
+import com.github.miskyle.mcpt.bstat.Metrics;
 import com.github.schooluniform.cropplus.CropPlus;
 import java.io.File;
 import java.util.List;
@@ -33,6 +34,9 @@ public class Manager {
     }
     setupRealSurvivalAPI();
     CropManager.init(new File(plugin.getDataFolder() + "/crops"));
+    if (plugin.getConfig().getBoolean("enable-bStats", true)) {
+      Metrics.setupMetrics(plugin, 3802);
+    }
   }
 
   private static void setupRealSurvivalAPI() {
