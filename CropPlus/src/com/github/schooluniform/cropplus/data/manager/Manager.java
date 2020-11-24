@@ -32,7 +32,6 @@ public class Manager {
     if (enableRs) {
       setupRealSurvivalAPI();
     }
-    setupRealSurvivalAPI();
     CropManager.init(new File(plugin.getDataFolder() + "/crops"));
     if (plugin.getConfig().getBoolean("enable-bStats", true)) {
       Metrics.setupMetrics(plugin, 3802);
@@ -45,6 +44,7 @@ public class Manager {
       plugin.getLogger().info("检测到RealSurvival载入, 季节功能启动!");
     } else {
       rsAPI = null;
+      Manager.enableRs = false;
       plugin.getLogger().info("未检测到RealSurvival载入, 季节功能停用!");
     }
   }

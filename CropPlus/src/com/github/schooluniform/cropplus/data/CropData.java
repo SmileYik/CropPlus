@@ -105,14 +105,16 @@ public class CropData {
       min = max = Double.parseDouble(temp);      
     }
 
-    // season
     LinkedList<Season> seasons = new LinkedList<>();
-    for (String season : crop.getStringList("season.season")) {
-      try {
-        seasons.add(Season.valueOf(season));
-      } catch (Exception e) {
-        Bukkit.getLogger().warning("[CropPlus]: Wrong Season in \"" + cropFile.getName() + "\"");
-      }
+    // season
+    if (Manager.enableRs) {
+      for (String season : crop.getStringList("season.season")) {
+        try {
+          seasons.add(Season.valueOf(season));
+        } catch (Exception e) {
+          Bukkit.getLogger().warning("[CropPlus]: Wrong Season in \"" + cropFile.getName() + "\"");
+        }
+      }      
     }
 
     return new CropData(name, crop.getInt("light"), 

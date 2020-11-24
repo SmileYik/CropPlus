@@ -1,6 +1,6 @@
 name: CropPlus
 main:  com.github.schooluniform.cropplus.CropPlus
-version: 0.0.8
+version: 0.0.9
 author: miSkYle
 softdepend: [RealSurvival]
 api-version: 1.13
